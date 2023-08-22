@@ -1,23 +1,24 @@
+import { useState } from "react";
 import { Button } from "../components/Button"
 import { Message } from "../components/Message"
 
 export const CounterPage = () =>
 {
-    let count = 0;
-    const setCount = (value)=>{
+    const[count,setCount]=useState(0);
+    // let count = 0;
+    const updateCount = (value)=>{
         if(value ==='+'){
-            count++;
+            setCount(count+1);
         }else{
-            count--;
+            setCount(count-1);
         }
-        console.log('count is ',count)
     }
     return (
         <div className="container">
             <Message classname='alert alert-danger'msg = "CounterApp"/>
             <Message val = {count} classname='alert alert-success'msg = "CounterValue is: "/>
-            <Button  fn = {setCount} classname='btn btn-success me-2' value = '+'/>
-            <Button fn = {setCount} classname='btn btn-danger' value = '-'/>
+            <Button  fn = {updateCount} classname='btn btn-success me-2' value = '+'/>
+            <Button fn = {updateCount} classname='btn btn-danger' value = '-'/>
         </div>
     )
 }
