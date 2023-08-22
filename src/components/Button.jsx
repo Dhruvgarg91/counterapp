@@ -1,4 +1,8 @@
-export const Button = ({value,classname}) =>
+export const Button = ({value,classname,fn}) =>
 {
-    return(<button className={classname}>{value}</button>)
+    const clicked = ()=>{
+        fn(value);
+        console.log('Clicked',value)
+    }
+    return(<button onClick ={ clicked}className={classname}>{value}</button>)
 }
